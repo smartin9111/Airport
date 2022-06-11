@@ -1,19 +1,27 @@
-package hu.webuni.airport.dto;
+package hu.webuni.airport.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.Size;
 
-public class AirportDto {
+@Entity
+@NamedQuery(name="Airport.countByIata",query = "SELECT COUNT(a.id) from Airport a WHERE a.iata = :iata")
+public class Airport {
 
+	@Id
+	@GeneratedValue
 	private long id;
 	
 	@Size(min = 3, max = 20)
 	private String name;
 	private String iata;
 	
-	public AirportDto() {
+	public Airport() {
 	}
 	
-	public AirportDto(long id, String name, String iata) {
+	public Airport(long id, String name, String iata) {
 		this.id = id;
 		this.name = name;
 		this.iata = iata;

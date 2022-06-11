@@ -22,12 +22,12 @@ public class SpecialDiscountService implements DiscountService {
 	@Autowired
 	AirportConfigProperties config;
 	
+	@Override
 	public int getDiscountPercent(int totalPrice) {
-		//return totalPrice > limit ? specialPercent : defaulPercernt;
+//		return totalPrice > limit ? specialPercent : defaultPercent;
 		return totalPrice > config.getDiscount().getSpecial().getLimit() 
 				? config.getDiscount().getSpecial().getPercent() 
 				: config.getDiscount().getDef().getPercent();
 	}
-
 	
 }
